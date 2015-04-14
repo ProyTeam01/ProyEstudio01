@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idPadre: 1
+  nivel: 1
+  titulo: MyString
+  content: MyText
+  createdby: MyString
+  upvote: MyString
+  downvote: MyString
+  type: 
+
+two:
+  idPadre: 1
+  nivel: 1
+  titulo: MyString
+  content: MyText
+  createdby: MyString
+  upvote: MyString
+  downvote: MyString
+  type: 

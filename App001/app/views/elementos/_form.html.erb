@@ -1,0 +1,49 @@
+<%= form_for(@elemento) do |f| %>
+  <% if @elemento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@elemento.errors.count, "error") %> prohibited this elemento from being saved:</h2>
+
+      <ul>
+      <% @elemento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :idPadre %><br>
+    <%= f.number_field :idPadre %>
+  </div>
+  <div class="field">
+    <%= f.label :nivel %><br>
+    <%= f.number_field :nivel %>
+  </div>
+  <div class="field">
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :createdby %><br>
+    <%= f.text_field :createdby %>
+  </div>
+  <div class="field">
+    <%= f.label :upvote %><br>
+    <%= f.text_field :upvote %>
+  </div>
+  <div class="field">
+    <%= f.label :downvote %><br>
+    <%= f.text_field :downvote %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

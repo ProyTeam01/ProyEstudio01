@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>id:</strong>
+  <%= @objeto.id %>
+</p>
+
+<p>
+  <strong>Padreid:</strong>
+  <%= @objeto.padreid %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @objeto.titulo %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @objeto.content %>
+</p>
+
+<p>
+  <strong>Createdby:</strong>
+  <%= @objeto.createdby %>
+</p>
+
+<p>
+  <strong>Upvote:</strong>
+  <%= @objeto.upvote %>
+</p>
+
+<p>
+  <strong>Downvote:</strong>
+  <%= @objeto.downvote %>
+</p>
+
+<%= link_to 'Edit', edit_objeto_path(@objeto) %> |
+<%= link_to 'Back', objetos_path %>
+
+<br>
+<p>
+  <%= link_to 'Hijo Objeto', new_objeto_path(@objeto) %>
+</p>

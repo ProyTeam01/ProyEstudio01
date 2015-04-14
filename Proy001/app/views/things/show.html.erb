@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ippadre:</strong>
+  <%= @thing.ippadre %>
+</p>
+
+<p>
+  <strong>Nivel:</strong>
+  <%= @thing.nivel %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @thing.titulo %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @thing.content %>
+</p>
+
+<p>
+  <strong>Createdby:</strong>
+  <%= @thing.createdby %>
+</p>
+
+<p>
+  <strong>Upvote:</strong>
+  <%= @thing.upvote %>
+</p>
+
+<p>
+  <strong>Downvote:</strong>
+  <%= @thing.downvote %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @thing.type %>
+</p>
+
+<%= link_to 'Edit', edit_thing_path(@thing) %> |
+<%= link_to 'Back', things_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Objetos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Padreid</th>
+      <th>Titulo</th>
+      <th>Content</th>
+      <th>Createdby</th>
+      <th>Upvote</th>
+      <th>Downvote</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @objetos.each do |objeto| %>
+      <tr>
+        <td><%= objeto.id %> </td>
+        <td><%= objeto.padreid %></td>
+        <td><%= objeto.titulo %></td>
+        <td><%= objeto.content %></td>
+        <td><%= objeto.createdby %></td>
+        <td><%= objeto.upvote %></td>
+        <td><%= objeto.downvote %></td>
+        <td><%= link_to 'Show', objeto %></td>
+        <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
+        <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Objeto', new_objeto_path %>

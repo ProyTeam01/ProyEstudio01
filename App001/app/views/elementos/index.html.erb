@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Elementos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Idpadre</th>
+      <th>Nivel</th>
+      <th>Titulo</th>
+      <th>Content</th>
+      <th>Createdby</th>
+      <th>Upvote</th>
+      <th>Downvote</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @elementos.each do |elemento| %>
+      <tr>
+        <td><%= elemento.idPadre %></td>
+        <td><%= elemento.nivel %></td>
+        <td><%= elemento.titulo %></td>
+        <td><%= elemento.content %></td>
+        <td><%= elemento.createdby %></td>
+        <td><%= elemento.upvote %></td>
+        <td><%= elemento.downvote %></td>
+        <td><%= elemento.type %></td>
+        <td><%= link_to 'Show', elemento %></td>
+        <td><%= link_to 'Edit', edit_elemento_path(elemento) %></td>
+        <td><%= link_to 'Destroy', elemento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Elemento', new_elemento_path %>

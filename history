@@ -1,0 +1,6 @@
+
+
+
+rails generate scaffold HighScore game:string score:integer
+
+rails generate scaffold Objeto padreid:integer titulo:string content:text createdby:string upvote:integer downvote:integer
