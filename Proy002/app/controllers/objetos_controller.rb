@@ -4,7 +4,13 @@ class ObjetosController < ApplicationController
   # GET /objetos
   # GET /objetos.json
   def index
-    @objetos = Objeto.all
+    
+    if params[:id] == nil
+      @objetos = Objeto.where(padreid: nil)
+    else
+      @objetos = Objeto.where(padreid: params[:id])
+    end
+
   end
 
   # GET /objetos/1
@@ -15,10 +21,7 @@ class ObjetosController < ApplicationController
   # GET /objetos/new
   def new
     @objeto = Objeto.new
-    @test = 5
-
-    #@objeto.padreid = @objeto.update(objeto_params.id)
-
+    @objeto.padreid = params[:pid]
   end
 
   # GET /objetos/1/edit
@@ -28,7 +31,6 @@ class ObjetosController < ApplicationController
   # POST /objetos
   # POST /objetos.json
   def create
-    @oop = 8
     @objeto = Objeto.new(objeto_params)
 
     respond_to do |format|
