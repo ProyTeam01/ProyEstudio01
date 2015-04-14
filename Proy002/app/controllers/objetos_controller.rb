@@ -13,6 +13,22 @@ class ObjetosController < ApplicationController
 
   end
 
+  def votoup
+    objeto = Objeto.where(id: params[:id])
+    ini = objeto[0].votoup
+    fin = ini +1
+
+    # obj[0].update_attribute :upvote,1
+    objeto[0].update_attribute :upvote,fin
+
+
+
+  end
+
+  def votodown
+
+  end
+
   # GET /objetos/1
   # GET /objetos/1.json
   def show

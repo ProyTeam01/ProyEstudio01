@@ -36,6 +36,14 @@
         <td><%= link_to 'Show', objeto %></td>
         <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
         <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+      <td>
+      <% #link_to 'Me Gusta', controller_path(objeto.id: ), method: :votoup  %>
+      <% #link_to 'Me Gusta', votoup_objeto_path(objeto.id), method: :put  %>
+      <%= link_to 'No me Gusta', votodown_objeto_path(objeto.id),method: :get %>
+      </td>
+
       </tr>
     <% end %>
   </tbody>
