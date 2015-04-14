@@ -36,9 +36,13 @@
 </p>
 
 <%= link_to 'Edit', edit_objeto_path(@objeto) %> |
-<%= link_to 'Back', objetos_path %>
+<% if @objeto.padreid.present? %>
+  <%= link_to 'Back', objetos_path(:id => @objeto.padreid) %>
+<% else %>
+  <%= link_to 'Back', objetos_path %>
+<% end %>
 
 <br>
 <p>
-  <%= link_to 'Hijo Padre', new_objeto_path(:pid => @objeto.id) %>
+  <%= link_to 'Create Child', new_objeto_path(:pid => @objeto.id) %>
 </p>

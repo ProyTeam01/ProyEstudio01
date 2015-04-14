@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Objetos</h1>
-<h1>
-  <% if params[:id].present? %>
+<% if params[:id].present? %>
+<h2>
     <%= Objeto.where(id: params[:id])[0].titulo %>
-  <% end %>
-</h1>
+</h2>
+<%= link_to 'Back', objetos_path(:id => Objeto.where(id: params[:id])[0].padreid) %>
+<% end %>
 
 <table>
   <thead>
@@ -31,7 +32,7 @@
         <td><%= objeto.createdby %></td>
         <td><%= objeto.upvote %></td>
         <td><%= objeto.downvote %></td>
-        <td><%= link_to 'Navigate', objetos_path(:id => objeto.id)  %></td>
+        <td><%= link_to 'Navigate', objetos_path(:id => objeto.id) %></td>
         <td><%= link_to 'Show', objeto %></td>
         <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
         <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,5 +42,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Objeto', new_objeto_path %>
+<% if params[:id].present? %>
+  <%= link_to 'New Objeto', new_objeto_path(:pid => params[:id]) %>
+<% else %>
+  <%= link_to 'New Objeto', new_objeto_path %>
+<% end %>
