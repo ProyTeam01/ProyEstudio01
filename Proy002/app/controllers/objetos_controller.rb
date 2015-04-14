@@ -4,7 +4,7 @@ class ObjetosController < ApplicationController
   # GET /objetos
   # GET /objetos.json
   def index
-    
+
     if params[:id] == nil
       @objetos = Objeto.where(padreid: nil)
     else
@@ -22,6 +22,10 @@ class ObjetosController < ApplicationController
   def new
     @objeto = Objeto.new
     @objeto.padreid = params[:pid]
+
+    @objeto.upvote = 0
+    @objeto.downvote = 0
+
   end
 
   # GET /objetos/1/edit
