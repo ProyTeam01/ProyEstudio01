@@ -1,5 +1,5 @@
 class ObjetosController < ApplicationController
-  before_action :set_objeto, only: [:show, :edit, :update, :destroy]
+  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown]
 
   # GET /objetos
   # GET /objetos.json
@@ -13,23 +13,17 @@ class ObjetosController < ApplicationController
 
   end
 
-  def votoup
-    objeto = Objeto.where(id: params[:id])
-    ini = objeto[0].votoup
-    fin = ini +1
-
-    # obj[0].update_attribute :upvote,1
-    objeto[0].update_attribute :upvote,fin
-
-
-
+  def voteup
+    sleep 1
+    @objeto.update(upvote: (@objeto.upvote+1))
   end
 
-  def votodown
-
+  def votedown
+    sleep 1
+    @objeto.update(downvote: (@objeto.downvote+1))
   end
 
-  # GET /objetos/1
+  # GET /objetos/1`
   # GET /objetos/1.json
   def show
   end

@@ -5,7 +5,8 @@
 <h2>
     <%= Objeto.where(id: params[:id])[0].titulo %>
 </h2>
-<%= link_to 'Back', objetos_path(:id => Objeto.where(id: params[:id])[0].padreid) %>
+<%= link_to 'Back', objetos_path(:id => Objeto.where(id: params[:id])[0].padreid) %>|
+<%= link_to 'Details', objeto_path(:id => params[:id]) %>
 <% end %>
 
 <table>
@@ -18,7 +19,7 @@
       <th>Createdby</th>
       <th>Upvote</th>
       <th>Downvote</th>
-      <th colspan="4"></th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -30,20 +31,18 @@
         <td><%= objeto.titulo %></td>
         <td><%= objeto.content %></td>
         <td><%= objeto.createdby %></td>
-        <td><%= objeto.upvote %></td>
-        <td><%= objeto.downvote %></td>
+        <td>
+          <strong id="upvotes-now-<%= objeto.id %>" ><%= objeto.upvote %></strong>
+        </td>
+        <td>
+          <strong id="downvotes-now-<%= objeto.id %>"><%= objeto.downvote %></strong>
+        </td>
         <td><%= link_to 'Navigate', objetos_path(:id => objeto.id) %></td>
         <td><%= link_to 'Show', objeto %></td>
         <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
         <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-
-      <td>
-      <% #link_to 'Me Gusta', controller_path(objeto.id: ), method: :votoup  %>
-      <% #link_to 'Me Gusta', votoup_objeto_path(objeto.id), method: :put  %>
-      <%= link_to 'No me Gusta', votodown_objeto_path(objeto.id),method: :get %>
-      </td>
-
+        <td><%= link_to 'Nice', voteup_objeto_path(objeto), method: :patch, remote: true, data: {disable_with: "..."} %></td>
+        <td><%= link_to 'Sucks', votedown_objeto_path(objeto), method: :patch, remote: true, data: {disable_with: "..."} %></td>
       </tr>
     <% end %>
   </tbody>
