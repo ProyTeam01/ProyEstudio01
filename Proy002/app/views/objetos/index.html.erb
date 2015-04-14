@@ -36,12 +36,22 @@
         <td><%= link_to 'Show', objeto %></td>
         <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
         <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+    <a href="#" onclick=data-background-color="#990000">Paint it red</a>
+    </td>
 
+    <td>
+    <a href="#" onclick=""> Vote Up </a>
+    </td>
+
+     <td>
+    <a href="#" onclick=""> Vote Down </a>
+    </td>
 
       <td>
-      <% #link_to 'Me Gusta', controller_path(objeto.id: ), method: :votoup  %>
-      <% #link_to 'Me Gusta', votoup_objeto_path(objeto.id), method: :put  %>
-      <%= link_to 'No me Gusta', votodown_objeto_path(objeto.id),method: :get %>
+
+      <%= link_to 'Nice', votoup_objeto_path(objeto.id), method: :put , remote: true %>
+      <%= link_to 'Sucks', votodown_objeto_path(objeto.id),method: :get ,  remote: true %>
       </td>
 
       </tr>
