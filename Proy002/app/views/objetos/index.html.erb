@@ -25,6 +25,8 @@
 
   <tbody>
     <% @objetos.each do |objeto| %>
+ 
+
       <tr>
         <td><%= objeto.id %> </td>
         <td><%= objeto.padreid %></td>
@@ -37,7 +39,9 @@
         <td>
           <strong id="downvotes-now-<%= objeto.id %>"><%= objeto.downvote %></strong>
         </td>
-        <td><%= link_to 'Navigate', objetos_path(:id => objeto.id) %></td>
+        <td>
+          <%= link_to 'Navigate', objetos_path(:id => objeto.id) %>
+        </td>
         <td><%= link_to 'Show', objeto %></td>
         <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
         <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
