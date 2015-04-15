@@ -35,6 +35,11 @@
   <%= @objeto.downvote %>
 </p>
 
+<p>
+  <strong>Tipe:</strong>
+  <%= @objeto.tipe %>
+</p>
+
 <%= link_to 'Edit', edit_objeto_path(@objeto) %> |
 <% if @objeto.padreid.present? %>
   <%= link_to 'Back', objetos_path(:id => @objeto.padreid) %>

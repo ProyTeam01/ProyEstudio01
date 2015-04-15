@@ -1,5 +1,5 @@
 class ObjetosController < ApplicationController
-  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown]
+  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown ]
 
   # GET /objetos
   # GET /objetos.json
@@ -90,6 +90,6 @@ class ObjetosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def objeto_params
-      params.require(:objeto).permit(:padreid, :titulo, :content, :createdby, :upvote, :downvote)
+      params.require(:objeto).permit(:padreid, :titulo, :content, :createdby, :upvote, :downvote , :tipe)
     end
 end

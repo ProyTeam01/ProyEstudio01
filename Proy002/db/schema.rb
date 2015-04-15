@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415050739) do
+ActiveRecord::Schema.define(version: 20150415054758) do
 
   create_table "objetos", force: :cascade do |t|
     t.integer  "padreid"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150415050739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "issubject"
-    t.decimal  "tipe"
+    t.integer  "tipe"
   end
 
 end
