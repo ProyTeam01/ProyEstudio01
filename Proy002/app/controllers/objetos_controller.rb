@@ -6,9 +6,13 @@ class ObjetosController < ApplicationController
   def index
 
     if params[:id] == nil
-      @objetos = Objeto.where(padreid: nil)
+      @objetos = Objeto.where(padreid: nil ).where(tipe: 1)
+      @objetoPost = Objeto.where(padreid: nil ).where(tipe: 2)
+      @objetoComm = Objeto.where(padreid: nil ).where(tipe: 3)
     else
-      @objetos = Objeto.where(padreid: params[:id])
+      @objetos = Objeto.where(padreid: params[:id]).where(tipe: 1)
+      @objetoPost = Objeto.where(padreid: params[:id] ).where(tipe: 2)
+      @objetoComm = Objeto.where(padreid: params[:id] ).where(tipe: 3)
     end
 
   end
@@ -26,12 +30,15 @@ class ObjetosController < ApplicationController
   # GET /objetos/1`
   # GET /objetos/1.json
   def show
+    @objetoComm = Objeto.where(padreid: params[:id] ).where(tipe: 3)
   end
 
   # GET /objetos/new
   def new
     @objeto = Objeto.new
     @objeto.padreid = params[:pid]
+
+
 
     @objeto.upvote = 0
     @objeto.downvote = 0

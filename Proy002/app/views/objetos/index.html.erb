@@ -57,6 +57,56 @@
     <% end %>
   </tbody>
 </table>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Padreid</th>
+      <th>Titulo</th>
+      <th>Content</th>
+      <th>Createdby</th>
+      <th>Upvote</th>
+      <th>Downvote</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+ <tbody>
+    <% @objetoPost.each do |objetoPost| %>
+
+
+      <tr>
+        <td><%= objetoPost.id %> </td>
+        <td><%= objetoPost.padreid %></td>
+        <td><%= objetoPost.titulo %></td>
+        <td><%= objetoPost.content %></td>
+        <td><%= objetoPost.createdby %></td>
+
+        <td>
+          <strong id="upvotes-now-<%= objetoPost.id %>" ><%= objetoPost.upvote %></strong>
+        </td>
+        <td>
+          <strong id="downvotes-now-<%= objetoPost.id %>"><%= objetoPost.downvote %></strong>
+        </td>
+        <td> <%= objetoPost.tipe  %> </td>
+
+        <td>
+        <% if objetoPost.tipe == 1 %>
+          <%= link_to 'Navigate', objetos_path(:id => objetoPost.id) %>
+        <% end %>
+        </td>
+
+        <td><%= link_to 'Show', objetoPost %></td>
+        <td><%= link_to 'Edit', edit_objeto_path(objetoPost) %></td>
+        <td><%= link_to 'Destroy', objetoPost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Nice', voteup_objeto_path(objetoPost), method: :patch, remote: true, data: {disable_with: "..."} %></td>
+        <td><%= link_to 'Sucks', votedown_objeto_path(objetoPost), method: :patch, remote: true, data: {disable_with: "..."} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <br>
 <% if params[:id].present? %>
