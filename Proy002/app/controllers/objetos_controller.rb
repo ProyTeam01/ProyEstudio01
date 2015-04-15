@@ -1,5 +1,5 @@
 class ObjetosController < ApplicationController
-  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown ]
+  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown, :addcomment , :addop]
 
   # GET /objetos
   # GET /objetos.json
@@ -14,6 +14,21 @@ class ObjetosController < ApplicationController
       @objetoPost = Objeto.where(padreid: params[:id] ).where(tipe: 2)
       @objetoComm = Objeto.where(padreid: params[:id] ).where(tipe: 3)
     end
+
+  end
+
+  def addop
+
+  end
+
+  def addcomment
+   # @objeto = Objeto.new
+   # @objeto.padreid = params[:pid]
+
+
+   # @objeto.tipe = 3
+   # @objeto.upvote = 0
+   # @objeto.downvote = 0
 
   end
 
