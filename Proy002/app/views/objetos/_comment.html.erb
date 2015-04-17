@@ -1,0 +1,7 @@
+<div>
+	<p><b><%= comment.createdby %></b></p>
+	<%= comment.content %>
+	<div class="child">
+		<%= render partial: "comment", collection: Objeto.where(padreid: comment.id) %>
+	</div>
+</div>

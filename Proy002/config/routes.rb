@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   resources :objetos do
-
-
     member do
       patch :voteup
       patch :votedown
       patch :addcomment
-      get :addop
     end
   end
 

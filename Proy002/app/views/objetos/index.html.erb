@@ -1,116 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Objetos</h1>
 <% if params[:id].present? %>
-<h2>
-    <%= Objeto.where(id: params[:id])[0].titulo %>
-</h2>
-<%= link_to 'Back', objetos_path(:id => Objeto.where(id: params[:id])[0].padreid) %>|
-<%= link_to 'Details', objeto_path(:id => params[:id]) %>
+  <h1><%= Objeto.where(id: params[:id])[0].titulo %></h1>
+  <%= link_to 'Back', objetos_path(:id => Objeto.where(id: params[:id])[0].padreid) %>|
+  <%= link_to 'Details', objeto_path(:id => params[:id]) %>
+<% else %>
+  <h1>Temas Principales</h1>
 <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Padreid</th>
       <th>Titulo</th>
-      <th>Content</th>
       <th>Createdby</th>
       <th>Upvote</th>
       <th>Downvote</th>
       <th colspan="6"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @objetos.each do |objeto| %>
-
-
       <tr>
-        <td><%= objeto.id %> </td>
-        <td><%= objeto.padreid %></td>
-        <td><%= objeto.titulo %></td>
-        <td><%= objeto.content %></td>
+        <td>
+          <% if objeto.tipe == 1 %>
+            <strong><%= link_to objeto.titulo, objetos_path(:id => objeto.id) %></strong>
+          <% else %>
+            <%= link_to objeto.titulo, objeto %>
+          <% end %>
+        </td>
         <td><%= objeto.createdby %></td>
-
-        <td>
-          <strong id="upvotes-now-<%= objeto.id %>" ><%= objeto.upvote %></strong>
-        </td>
-        <td>
-          <strong id="downvotes-now-<%= objeto.id %>"><%= objeto.downvote %></strong>
-        </td>
-        <td> <%= objeto.tipe  %> </td>
-
-        <td>
-        <% if objeto.tipe == 1 %>
-          <%= link_to 'Navigate', objetos_path(:id => objeto.id) %>
-        <% end %>
-        </td>
-
-        <td><%= link_to 'Show', objeto %></td>
+        <td><div id="upvotes-now-<%= objeto.id %>" ><%= objeto.upvote %></div></td>
+        <td><div id="downvotes-now-<%= objeto.id %>"><%= objeto.downvote %></div></td>
         <td><%= link_to 'Edit', edit_objeto_path(objeto) %></td>
         <td><%= link_to 'Destroy', objeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Nice', voteup_objeto_path(objeto), method: :patch, remote: true, data: {disable_with: "..."} %></td>
-        <td><%= link_to 'Sucks', votedown_objeto_path(objeto), method: :patch, remote: true, data: {disable_with: "..."} %></td>
+        <td><%= link_to 'UpVote', voteup_objeto_path(objeto), method: :patch, remote: true, data: {disable_with: "..."} %></td>
+        <td><%= link_to 'DownVote', votedown_objeto_path(objeto), method: :patch, remote: true, data: {disable_with: "..."} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<br>
-
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Padreid</th>
-      <th>Titulo</th>
-      <th>Content</th>
-      <th>Createdby</th>
-      <th>Upvote</th>
-      <th>Downvote</th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
- <tbody>
-    <% @objetoPost.each do |objetoPost| %>
-
-
-      <tr>
-        <td><%= objetoPost.id %> </td>
-        <td><%= objetoPost.padreid %></td>
-        <td><%= objetoPost.titulo %></td>
-        <td><%= objetoPost.content %></td>
-        <td><%= objetoPost.createdby %></td>
-
-        <td>
-          <strong id="upvotes-now-<%= objetoPost.id %>" ><%= objetoPost.upvote %></strong>
-        </td>
-        <td>
-          <strong id="downvotes-now-<%= objetoPost.id %>"><%= objetoPost.downvote %></strong>
-        </td>
-        <td> <%= objetoPost.tipe  %> </td>
-
-        <td>
-        <% if objetoPost.tipe == 1 %>
-          <%= link_to 'Navigate', objetos_path(:id => objetoPost.id) %>
-        <% end %>
-        </td>
-
-        <td><%= link_to 'Show', objetoPost %></td>
-        <td><%= link_to 'Edit', edit_objeto_path(objetoPost) %></td>
-        <td><%= link_to 'Destroy', objetoPost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Nice', voteup_objeto_path(objetoPost), method: :patch, remote: true, data: {disable_with: "..."} %></td>
-        <td><%= link_to 'Sucks', votedown_objeto_path(objetoPost), method: :patch, remote: true, data: {disable_with: "..."} %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 
 <br>
 <% if params[:id].present? %>
-  <%= link_to 'New Objeto', new_objeto_path(:pid => params[:id]) %>
+  <%= link_to 'New Post', new_objeto_path(:pid => params[:id]) %>
 <% else %>
-  <%= link_to 'New Objeto', new_objeto_path %>
+  <%= link_to 'New Post', new_objeto_path %>
 <% end %>

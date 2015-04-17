@@ -1,49 +1,31 @@
 class ObjetosController < ApplicationController
-  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown, :addcomment , :addop]
+  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown, :addcomment]
 
   # GET /objetos
   # GET /objetos.json
   def index
-
-    if params[:id] == nil
-      @objetos = Objeto.where(padreid: nil ).where(tipe: 1)
-      @objetoPost = Objeto.where(padreid: nil ).where(tipe: 2)
-      @objetoComm = Objeto.where(padreid: nil ).where(tipe: 3)
+    if params[:id].present?
+      @objetos = Objeto.where(padreid: params[:id]).where(tipe: [1,2]).order(tipe: :asc).order("upvote-downvote DESC")
     else
-      @objetos = Objeto.where(padreid: params[:id]).where(tipe: 1)
-      @objetoPost = Objeto.where(padreid: params[:id] ).where(tipe: 2)
-      @objetoComm = Objeto.where(padreid: params[:id] ).where(tipe: 3)
+      @objetos = Objeto.where(padreid: nil).where(tipe: [1,2]).order(tipe: :asc).order("upvote-downvote DESC")
     end
 
   end
 
-  def addop
-
-  end
-
   def addcomment
-   # @objeto = Objeto.new
-   # @objeto.padreid = params[:pid]
-
-
-   # @objeto.tipe = 3
-   # @objeto.upvote = 0
-   # @objeto.downvote = 0
-
+    
   end
 
   def voteup
-    sleep 1
+    sleep 0.5
     @objeto.update(upvote: (@objeto.upvote+1))
   end
 
   def votedown
-    sleep 1
+    sleep 0.5
     @objeto.update(downvote: (@objeto.downvote+1))
   end
 
-  # GET /objetos/1`
-  # GET /objetos/1.json
   def show
     @objetoComm = Objeto.where(padreid: params[:id] ).where(tipe: 3)
   end
@@ -51,13 +33,12 @@ class ObjetosController < ApplicationController
   # GET /objetos/new
   def new
     @objeto = Objeto.new
-    @objeto.padreid = params[:pid]
-
-
-
+    if params[:pid].present?
+      @objeto.padreid = params[:pid]
+    end
     @objeto.upvote = 0
     @objeto.downvote = 0
-
+    @objeto.tipe = 2
   end
 
   # GET /objetos/1/edit
