@@ -18,7 +18,6 @@
   <%= @objeto.upvote %>/-<%= @objeto.downvote %>
 </p>
 
-
 <%= link_to 'Edit', edit_objeto_path(@objeto) %> |
 <% if @objeto.tipe == 1 %>
   <%= link_to 'Back', objetos_path(:id => @objeto.id) %>
@@ -27,9 +26,10 @@
 <% else %>
   <%= link_to 'Back', objetos_path %>
 <% end %>
+<br>
 
-<p>
-  <%= link_to 'Agregar Comentario', addcomment_objeto_path(@objeto), method: :patch, remote: true, data: {disable_with: "..."} %>
-</p>
+<%= render 'addcomment' %>
 
-<%= render partial: "comment", collection: Objeto.where(padreid: @objeto.id) %>
+<div id="comments">
+  <%= render partial: "comment", collection: Objeto.where(padreid: @objeto.id, tipe: 3) %>
+</div>

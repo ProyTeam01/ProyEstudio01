@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     member do
       patch :voteup
       patch :votedown
-      patch :addcomment
+      post :addcomment
     end
   end
 

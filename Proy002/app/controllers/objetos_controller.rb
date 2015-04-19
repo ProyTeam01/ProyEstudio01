@@ -13,7 +13,14 @@ class ObjetosController < ApplicationController
   end
 
   def addcomment
-    
+    sleep 1
+    @comment = Objeto.new(objeto_params)
+    @comment.padreid = @objeto.id
+    @comment.upvote = 0
+    @comment.downvote = 0
+    @comment.tipe = 3
+    @comment.createdby = "autoUser"
+    @comment.save
   end
 
   def voteup
@@ -27,7 +34,7 @@ class ObjetosController < ApplicationController
   end
 
   def show
-    @objetoComm = Objeto.where(padreid: params[:id] ).where(tipe: 3)
+    @comment = Objeto.new
   end
 
   # GET /objetos/new
