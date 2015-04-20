@@ -1,6 +1,12 @@
 <div>
 	<p><b><%= comment.createdby %></b></p>
 	<%= comment.content %>
+	<% if defined?(justcreated).nil? %>
+		<div id="comment-<%= comment.id %>">
+			 <%= link_to 'Add comment', addchildcomment_objeto_path(:parentid => comment.id), method: :patch, remote: true, id:"commentlink-"+comment.id.to_s %>
+		</div>
+	<% end %>
+	<div id="commentform-<%= comment.id %>"></div>
 	<div class="child">
 		<%= render partial: "comment", collection: Objeto.where(padreid: comment.id) %>
 	</div>

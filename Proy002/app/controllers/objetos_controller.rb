@@ -1,5 +1,5 @@
 class ObjetosController < ApplicationController
-  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown, :addcomment]
+  before_action :set_objeto, only: [:show, :edit, :update, :destroy, :voteup, :votedown, :addcomment, :addchildcomment]
 
   # GET /objetos
   # GET /objetos.json
@@ -13,14 +13,20 @@ class ObjetosController < ApplicationController
   end
 
   def addcomment
-    sleep 1
+    sleep 0.5
     @comment = Objeto.new(objeto_params)
-    @comment.padreid = @objeto.id
+    @comment.padreid = params[:padreid]
+    @fromchild = params[:fromchild]
     @comment.upvote = 0
     @comment.downvote = 0
     @comment.tipe = 3
     @comment.createdby = "autoUser"
     @comment.save
+  end
+
+  def addchildcomment
+    @commentparentid = params[:parentid]
+    @comment = Objeto.new()
   end
 
   def voteup

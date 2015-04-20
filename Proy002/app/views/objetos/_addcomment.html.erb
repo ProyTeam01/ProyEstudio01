@@ -1,4 +1,4 @@
-<%= form_for(@comment, url: addcomment_objeto_path, :remote => true) do |c| %>
+<%= form_for(@comment, url: addcomment_objeto_path(:padreid => commentpadreid, :fromchild => fromchild), :remote => true) do |c| %>
   <div class="field">
     <%= c.text_area :content, size: "100x3", id: "comment_area" %>
   </div>

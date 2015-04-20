@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       patch :voteup
       patch :votedown
       post :addcomment
+      patch :addchildcomment
     end
   end
 

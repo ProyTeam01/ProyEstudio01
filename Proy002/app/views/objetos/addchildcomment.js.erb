@@ -1,0 +1,2 @@
+$("#commentlink-<%= @commentparentid %>").hide();
+$("#commentform-<%= @commentparentid %>").append("<%= j(render partial: 'addcomment', locals: {commentpadreid: @commentparentid, fromchild: true}) %>");

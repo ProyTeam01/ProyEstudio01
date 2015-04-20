@@ -28,8 +28,8 @@
 <% end %>
 <br>
 
-<%= render 'addcomment' %>
+<%= render partial: "addcomment", locals: {commentpadreid: @objeto.id, fromchild: false} %>
 
-<div id="comments">
+<div id="comment-<%= @objeto.id %>">
   <%= render partial: "comment", collection: Objeto.where(padreid: @objeto.id, tipe: 3) %>
 </div>

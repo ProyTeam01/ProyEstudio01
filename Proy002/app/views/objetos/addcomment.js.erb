@@ -1,2 +1,7 @@
 $("#comment_area").val('');
-$("#comments").prepend("<%= j(render partial: 'comment', object: @comment) %>");
+$("#commentform-<%= @comment.padreid %>").empty();
+<% if @fromchild == "true" %>
+	$("#comment-<%= @comment.padreid %>").prepend("<div class='child'><%= j(render partial: 'comment', object: @comment, locals:{justcreated: true}) %></div>");
+<% else %>
+	$("#comment-<%= @comment.padreid %>").prepend("<%= j(render partial: 'comment', object: @comment, locals:{justcreated: true}) %>");
+<% end %>
